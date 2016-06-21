@@ -8,18 +8,28 @@
 
 #import <UIKit/UIKit.h>
 
+#pragma mark - Constants
+
 #define FTFoldingDefaultMargin                  8.0f
 #define FTFoldingDefaultIconSize                24.0f
 #define FTFoldingDefaultSepertorLineWidth       0.5f
+
+#pragma mark - ENUM FTFoldingSectionState
 
 typedef NS_ENUM(NSUInteger, FTFoldingSectionState) {
     FTFoldingSectionStateFlod,
     FTFoldingSectionStateShow,
 };
+
+#pragma mark - ENUM FTFoldingSectionHeaderArrowPosition
+
 typedef NS_ENUM(NSUInteger, FTFoldingSectionHeaderArrowPosition) {
     FTFoldingSectionHeaderArrowPositionLeft,
     FTFoldingSectionHeaderArrowPositionRight,
 };
+
+
+#pragma mark - FTFoldingTableViewDelegate
 
 @class FTFoldingTableView;
 
@@ -48,30 +58,27 @@ typedef NS_ENUM(NSUInteger, FTFoldingSectionHeaderArrowPosition) {
 
 @end
 
+#pragma mark - FTFoldingSectionHeaderDelegate
+
 @protocol FTFoldingSectionHeaderDelegate <NSObject>
 
 - (void)ftFoldingSectionHeaderTappedAtIndex:(NSInteger)index;
 
 @end
 
+#pragma mark - FTFoldingTableView
+
 @interface FTFoldingTableView : UITableView <UITableViewDelegate,UITableViewDataSource,FTFoldingSectionHeaderDelegate>
 
 @property (nonatomic, strong)id<FTFoldingTableViewDelegate> foldingDelegate;
-@property (nonatomic, strong)NSMutableArray *statusArray;
 
 @end
+
+#pragma mark - FTFoldingSectionHeader
 
 @interface FTFoldingSectionHeader : UIView
 
 @property (nonatomic, strong)id<FTFoldingSectionHeaderDelegate> tapDelegate;
-
-@property (nonatomic, strong)UILabel *titleLabel;
-@property (nonatomic, strong)UILabel *descriptionLabel;
-@property (nonatomic, strong)UIImageView *arrowImageView;
-@property (nonatomic, strong)CAShapeLayer *sepertorLine;
-@property (nonatomic, assign)FTFoldingSectionHeaderArrowPosition arrowPosition;
-@property (nonatomic, assign)FTFoldingSectionState sectionState;
-@property (nonatomic, strong)UITapGestureRecognizer *tapGesture;
 
 -(instancetype)initWithFrame:(CGRect)frame withTag:(NSInteger)tag;
 

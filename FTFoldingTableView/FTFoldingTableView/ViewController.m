@@ -19,8 +19,6 @@ static NSString *DemoTableViewIdentifier = @"DemoTableViewIdentifier";
 
 @property (weak, nonatomic) IBOutlet FTFoldingTableView *ft_tableView;
 
-
-@property (nonatomic, strong)NSArray *sectionTitleArray;
 @property (nonatomic, assign)FTFoldingSectionHeaderArrowPosition arrowPosition;
 
 @end
@@ -81,7 +79,9 @@ static NSString *DemoTableViewIdentifier = @"DemoTableViewIdentifier";
     
     
 }
+
 #pragma mark - FTFoldingTableViewDelegate / optional delegates, change almost everything using delegate
+
 - (NSString *)ftFoldingTableView:(FTFoldingTableView *)ftTableView descriptionForHeaderInSection:(NSInteger )section
 {
     return @"description";

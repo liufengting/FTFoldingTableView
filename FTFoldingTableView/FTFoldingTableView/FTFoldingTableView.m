@@ -8,13 +8,17 @@
 
 #import "FTFoldingTableView.h"
 
+#pragma mark - FTFoldingTableView
+
 @interface FTFoldingTableView ()
 
+@property (nonatomic, strong)NSMutableArray *statusArray;
 
 @end
 
-
 @implementation FTFoldingTableView
+
+#pragma mark - Initial Methods
 
 -(instancetype)init
 {
@@ -51,6 +55,8 @@
     return self;
 }
 
+#pragma mark - Setup Methods
+
 -(void)setupDelegateAndDataSource
 {
     self.delegate = self;
@@ -81,6 +87,7 @@
     return _statusArray;
 }
 
+#pragma mark - UI Configration
 
 -(FTFoldingSectionHeaderArrowPosition )perferedArrowPosition
 {
@@ -150,6 +157,7 @@
 
 
 #pragma mark - UITableViewDelegate,UITableViewDataSource
+
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     if (_foldingDelegate && [_foldingDelegate respondsToSelector:@selector(numberOfSectionForFTFoldingTableView:)]) {
@@ -251,10 +259,17 @@
 
 @end
 
+#pragma mark - FTFoldingSectionHeader
 
 @interface FTFoldingSectionHeader ()
 
-
+@property (nonatomic, strong)UILabel *titleLabel;
+@property (nonatomic, strong)UILabel *descriptionLabel;
+@property (nonatomic, strong)UIImageView *arrowImageView;
+@property (nonatomic, strong)CAShapeLayer *sepertorLine;
+@property (nonatomic, assign)FTFoldingSectionHeaderArrowPosition arrowPosition;
+@property (nonatomic, assign)FTFoldingSectionState sectionState;
+@property (nonatomic, strong)UITapGestureRecognizer *tapGesture;
 
 @end
 
@@ -330,9 +345,6 @@
     [path stroke];
     return path;
 }
-
-
-
 
 
 -(void)setupWithBackgroundColor:(UIColor *)backgroundColor
