@@ -366,7 +366,7 @@
     self.arrowPosition = arrowPosition;
     self.sectionState = sectionState;
     
-    if (sectionState == FTFoldingSectionStateFlod) {
+    if (sectionState == FTFoldingSectionStateShow) {
         if (self.arrowPosition == FTFoldingSectionHeaderArrowPositionRight) {
             self.arrowImageView.transform = CGAffineTransformMakeRotation(-M_PI/2);
         }else{
