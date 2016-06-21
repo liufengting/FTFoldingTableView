@@ -366,10 +366,19 @@
     self.arrowPosition = arrowPosition;
     self.sectionState = sectionState;
     
-    if (arrowPosition == FTFoldingSectionHeaderArrowPositionRight) {
-        _arrowImageView.transform = CGAffineTransformMakeRotation(M_PI/2);
+    if (sectionState == FTFoldingSectionStateFlod) {
+        if (self.arrowPosition == FTFoldingSectionHeaderArrowPositionRight) {
+            self.arrowImageView.transform = CGAffineTransformMakeRotation(-M_PI/2);
+        }else{
+            self.arrowImageView.transform = CGAffineTransformMakeRotation(M_PI/2);
+        }
+    } else {
+        if (self.arrowPosition == FTFoldingSectionHeaderArrowPositionRight) {
+            _arrowImageView.transform = CGAffineTransformMakeRotation(M_PI/2);
+        }else{
+            self.arrowImageView.transform = CGAffineTransformMakeRotation(0);
+        }
     }
-    
     
 }
 -(void)setupSubviewsWithArrowPosition:(FTFoldingSectionHeaderArrowPosition)arrowPosition
