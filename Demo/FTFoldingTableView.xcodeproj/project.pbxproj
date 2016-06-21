@@ -14,8 +14,8 @@
 		5AB106D31D178925003E69E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5AB106D21D178925003E69E4 /* Assets.xcassets */; };
 		5AB106D61D178925003E69E4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5AB106D41D178925003E69E4 /* LaunchScreen.storyboard */; };
 		5AB106E11D178926003E69E4 /* FTFoldingTableViewUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AB106E01D178926003E69E4 /* FTFoldingTableViewUITests.m */; };
-		5AB106F31D17B754003E69E4 /* FTFoldingTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AB106F21D17B754003E69E4 /* FTFoldingTableView.m */; };
-		5AB107011D17EFED003E69E4 /* Arrowhead.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AB107001D17EFED003E69E4 /* Arrowhead.png */; };
+		5AD9813B1D1929EC00A8FA68 /* Arrowhead.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AD981381D1929EC00A8FA68 /* Arrowhead.png */; };
+		5AD9813C1D1929EC00A8FA68 /* FTFoldingTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AD9813A1D1929EC00A8FA68 /* FTFoldingTableView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,9 +42,9 @@
 		5AB106DC1D178926003E69E4 /* FTFoldingTableViewUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FTFoldingTableViewUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5AB106E01D178926003E69E4 /* FTFoldingTableViewUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FTFoldingTableViewUITests.m; sourceTree = "<group>"; };
 		5AB106E21D178926003E69E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5AB106F11D17B754003E69E4 /* FTFoldingTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTFoldingTableView.h; sourceTree = "<group>"; };
-		5AB106F21D17B754003E69E4 /* FTFoldingTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTFoldingTableView.m; sourceTree = "<group>"; };
-		5AB107001D17EFED003E69E4 /* Arrowhead.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Arrowhead.png; sourceTree = "<group>"; };
+		5AD981381D1929EC00A8FA68 /* Arrowhead.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Arrowhead.png; sourceTree = "<group>"; };
+		5AD981391D1929EC00A8FA68 /* FTFoldingTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTFoldingTableView.h; sourceTree = "<group>"; };
+		5AD9813A1D1929EC00A8FA68 /* FTFoldingTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTFoldingTableView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,13 +86,11 @@
 		5AB106C51D178925003E69E4 /* FTFoldingTableView */ = {
 			isa = PBXGroup;
 			children = (
+				5AD981371D1929EC00A8FA68 /* FTFoldingTableView */,
 				5AB106C91D178925003E69E4 /* AppDelegate.h */,
 				5AB106CA1D178925003E69E4 /* AppDelegate.m */,
 				5AB106CC1D178925003E69E4 /* ViewController.h */,
 				5AB106CD1D178925003E69E4 /* ViewController.m */,
-				5AB106F11D17B754003E69E4 /* FTFoldingTableView.h */,
-				5AB106F21D17B754003E69E4 /* FTFoldingTableView.m */,
-				5AB107001D17EFED003E69E4 /* Arrowhead.png */,
 				5AB106CF1D178925003E69E4 /* Main.storyboard */,
 				5AB106D21D178925003E69E4 /* Assets.xcassets */,
 				5AB106D41D178925003E69E4 /* LaunchScreen.storyboard */,
@@ -117,6 +115,16 @@
 				5AB106E21D178926003E69E4 /* Info.plist */,
 			);
 			path = FTFoldingTableViewUITests;
+			sourceTree = "<group>";
+		};
+		5AD981371D1929EC00A8FA68 /* FTFoldingTableView */ = {
+			isa = PBXGroup;
+			children = (
+				5AD981381D1929EC00A8FA68 /* Arrowhead.png */,
+				5AD981391D1929EC00A8FA68 /* FTFoldingTableView.h */,
+				5AD9813A1D1929EC00A8FA68 /* FTFoldingTableView.m */,
+			);
+			path = FTFoldingTableView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -202,8 +210,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5AB107011D17EFED003E69E4 /* Arrowhead.png in Resources */,
 				5AB106D61D178925003E69E4 /* LaunchScreen.storyboard in Resources */,
+				5AD9813B1D1929EC00A8FA68 /* Arrowhead.png in Resources */,
 				5AB106D31D178925003E69E4 /* Assets.xcassets in Resources */,
 				5AB106D11D178925003E69E4 /* Main.storyboard in Resources */,
 			);
@@ -224,9 +232,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				5AB106CE1D178925003E69E4 /* ViewController.m in Sources */,
-				5AB106F31D17B754003E69E4 /* FTFoldingTableView.m in Sources */,
 				5AB106CB1D178925003E69E4 /* AppDelegate.m in Sources */,
 				5AB106C81D178925003E69E4 /* main.m in Sources */,
+				5AD9813C1D1929EC00A8FA68 /* FTFoldingTableView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
