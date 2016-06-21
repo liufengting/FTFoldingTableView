@@ -5,9 +5,9 @@ FTFoldingTableView. Folding cells with simple delegates, and change UI looks in 
 # ScreenShots
 
 
-| Style	| fold	| show	|
+| Style	| Left	| Right	|
 |:-------------|:-------------:|:-------------:|
-| Left | <img src="/Screenshots/Screenshots1.png" width="250"/> | <img src="/Screenshots/Screenshots2.png" width="250"/> |
-| Right| <img src="/Screenshots/Screenshots3.png" width="250"/> | <img src="/Screenshots/Screenshots4.png" width="250"/> |
+| fold | <img src="/Screenshots/Screenshots1.png" width="250"/> | <img src="/Screenshots/Screenshots3.png" width="250"/> |
+| show | <img src="/Screenshots/Screenshots2.png" width="250"/> | <img src="/Screenshots/Screenshots4.png" width="250"/> |
 
 
