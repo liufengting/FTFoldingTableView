@@ -81,7 +81,7 @@ static NSString *DemoTableViewIdentifier = @"DemoTableViewIdentifier";
     
     
 }
-#pragma mark - FTFoldingTableViewDelegate / optional
+#pragma mark - FTFoldingTableViewDelegate / optional delegates, change almost everything using delegate
 - (NSString *)ftFoldingTableView:(FTFoldingTableView *)ftTableView descriptionForHeaderInSection:(NSInteger )section
 {
     return @"description";
