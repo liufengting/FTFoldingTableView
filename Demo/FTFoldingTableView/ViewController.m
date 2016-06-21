@@ -86,6 +86,7 @@ static NSString *DemoTableViewIdentifier = @"DemoTableViewIdentifier";
 {
     return @"description";
 }
+
 //- (UIImage *)ftFoldingTableView:(FTFoldingTableView *)ftTableView arrowImageForSection:(NSInteger )section
 //{
 //    return [UIImage imageNamed:@"Arrowhead"];
