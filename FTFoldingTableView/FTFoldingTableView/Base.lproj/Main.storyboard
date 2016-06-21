@@ -64,7 +64,13 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" title="DEMO" id="meQ-mR-BjT"/>
+                    <navigationItem key="navigationItem" title="DEMO" id="meQ-mR-BjT">
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="FQh-RD-Q28">
+                            <connections>
+                                <action selector="changeStyle:" destination="BYZ-38-t0r" id="bfQ-0p-x5j"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="ft_tableView" destination="Fz8-mG-2zx" id="OZX-Um-hrt"/>
                     </connections>

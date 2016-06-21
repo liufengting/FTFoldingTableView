@@ -19,6 +19,10 @@ static NSString *DemoTableViewIdentifier = @"DemoTableViewIdentifier";
 
 @property (weak, nonatomic) IBOutlet FTFoldingTableView *ft_tableView;
 
+
+@property (nonatomic, strong)NSArray *sectionTitleArray;
+@property (nonatomic, assign)FTFoldingSectionHeaderArrowPosition arrowPosition;
+
 @end
 
 @implementation ViewController
@@ -26,18 +30,23 @@ static NSString *DemoTableViewIdentifier = @"DemoTableViewIdentifier";
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-
+    self.arrowPosition = FTFoldingSectionHeaderArrowPositionLeft;
     
     self.ft_tableView.foldingDelegate = self;
-    self.ft_tableView.tableFooterView = [[UIView alloc] init];
 
 }
-
-#pragma mark - FTFoldingTableViewDelegate
-
-- (FTFoldingSectionHeaderArrowDirection)perferedArrowDirectionForFTFoldingTableView:(FTFoldingTableView *)ftTableView
+- (IBAction)changeStyle:(UIBarButtonItem *)sender
 {
-    return FTFoldingSectionHeaderArrowDirectionRight;
+    self.arrowPosition = [NSNumber numberWithBool:(![NSNumber numberWithInteger:self.arrowPosition].boolValue)].integerValue;
+    
+    [self.ft_tableView reloadData];
+}
+
+#pragma mark - FTFoldingTableViewDelegate / required
+
+- (FTFoldingSectionHeaderArrowPosition)perferedArrowPositionForFTFoldingTableView:(FTFoldingTableView *)ftTableView
+{
+    return self.arrowPosition;
 }
 - (NSInteger )numberOfSectionForFTFoldingTableView:(FTFoldingTableView *)ftTableView
 {
@@ -72,6 +81,34 @@ static NSString *DemoTableViewIdentifier = @"DemoTableViewIdentifier";
     
     
 }
-
+#pragma mark - FTFoldingTableViewDelegate / optional
+- (NSString *)ftFoldingTableView:(FTFoldingTableView *)ftTableView descriptionForHeaderInSection:(NSInteger )section
+{
+    return @"description";
+}
+//- (UIImage *)ftFoldingTableView:(FTFoldingTableView *)ftTableView arrowImageForSection:(NSInteger )section
+//{
+//    return [UIImage imageNamed:@"Arrowhead"];
+//}
+//- (UIColor *)ftFoldingTableView:(FTFoldingTableView *)ftTableView backgroundColorForHeaderInSection:(NSInteger )section
+//{
+//    return [UIColor grayColor];
+//}
+//- (UIFont *)ftFoldingTableView:(FTFoldingTableView *)ftTableView fontForTitleInSection:(NSInteger )section
+//{
+//    return [UIFont boldSystemFontOfSize:16];
+//}
+//- (UIFont *)ftFoldingTableView:(FTFoldingTableView *)ftTableView fontForDescriptionInSection:(NSInteger )section
+//{
+//    return [UIFont systemFontOfSize:13];
+//}
+//- (UIColor *)ftFoldingTableView:(FTFoldingTableView *)ftTableView textColorForTitleInSection:(NSInteger )section
+//{
+//    return [UIColor whiteColor];
+//}
+//- (UIColor *)ftFoldingTableView:(FTFoldingTableView *)ftTableView textColorForDescriptionInSection:(NSInteger )section
+//{
+//    return [UIColor whiteColor];
+//}
 
 @end

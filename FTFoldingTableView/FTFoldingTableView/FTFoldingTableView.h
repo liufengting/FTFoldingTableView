@@ -9,16 +9,16 @@
 #import <UIKit/UIKit.h>
 
 #define FTFoldingDefaultMargin                  8.0f
-#define FTFoldingDefaultIconSize                20.0f
+#define FTFoldingDefaultIconSize                24.0f
 #define FTFoldingDefaultSepertorLineWidth       0.5f
 
 typedef NS_ENUM(NSUInteger, FTFoldingSectionState) {
     FTFoldingSectionStateFlod,
     FTFoldingSectionStateShow,
 };
-typedef NS_ENUM(NSUInteger, FTFoldingSectionHeaderArrowDirection) {
-    FTFoldingSectionHeaderArrowDirectionLeft,
-    FTFoldingSectionHeaderArrowDirectionRight,
+typedef NS_ENUM(NSUInteger, FTFoldingSectionHeaderArrowPosition) {
+    FTFoldingSectionHeaderArrowPositionLeft,
+    FTFoldingSectionHeaderArrowPositionRight,
 };
 
 @class FTFoldingTableView;
@@ -27,7 +27,7 @@ typedef NS_ENUM(NSUInteger, FTFoldingSectionHeaderArrowDirection) {
 
 @required
 
-- (FTFoldingSectionHeaderArrowDirection)perferedArrowDirectionForFTFoldingTableView:(FTFoldingTableView *)ftTableView;
+- (FTFoldingSectionHeaderArrowPosition)perferedArrowPositionForFTFoldingTableView:(FTFoldingTableView *)ftTableView;
 - (NSInteger )numberOfSectionForFTFoldingTableView:(FTFoldingTableView *)ftTableView;
 - (NSInteger )ftFoldingTableView:(FTFoldingTableView *)ftTableView numberOfRowsInSection:(NSInteger )section;
 - (CGFloat )ftFoldingTableView:(FTFoldingTableView *)ftTableView heightForHeaderInSection:(NSInteger )section;
@@ -38,15 +38,13 @@ typedef NS_ENUM(NSUInteger, FTFoldingSectionHeaderArrowDirection) {
 
 @optional
 
+- (UIImage *)ftFoldingTableView:(FTFoldingTableView *)ftTableView arrowImageForSection:(NSInteger )section;
 - (NSString *)ftFoldingTableView:(FTFoldingTableView *)ftTableView descriptionForHeaderInSection:(NSInteger )section;
 - (UIColor *)ftFoldingTableView:(FTFoldingTableView *)ftTableView backgroundColorForHeaderInSection:(NSInteger )section;
 - (UIFont *)ftFoldingTableView:(FTFoldingTableView *)ftTableView fontForTitleInSection:(NSInteger )section;
 - (UIFont *)ftFoldingTableView:(FTFoldingTableView *)ftTableView fontForDescriptionInSection:(NSInteger )section;
 - (UIColor *)ftFoldingTableView:(FTFoldingTableView *)ftTableView textColorForTitleInSection:(NSInteger )section;
 - (UIColor *)ftFoldingTableView:(FTFoldingTableView *)ftTableView textColorForDescriptionInSection:(NSInteger )section;
-- (UIImage *)ftFoldingTableView:(FTFoldingTableView *)ftTableView arrowImageForSection:(NSInteger )section;
-
-
 
 @end
 
@@ -71,7 +69,7 @@ typedef NS_ENUM(NSUInteger, FTFoldingSectionHeaderArrowDirection) {
 @property (nonatomic, strong)UILabel *descriptionLabel;
 @property (nonatomic, strong)UIImageView *arrowImageView;
 @property (nonatomic, strong)CAShapeLayer *sepertorLine;
-@property (nonatomic, assign)FTFoldingSectionHeaderArrowDirection arrowPosition;
+@property (nonatomic, assign)FTFoldingSectionHeaderArrowPosition arrowPosition;
 @property (nonatomic, assign)FTFoldingSectionState sectionState;
 @property (nonatomic, strong)UITapGestureRecognizer *tapGesture;
 
@@ -85,7 +83,7 @@ typedef NS_ENUM(NSUInteger, FTFoldingSectionHeaderArrowDirection) {
                descriptionColor:(UIColor *)descriptionColor
                 descriptionFont:(UIFont *)descriptionFont
                      arrowImage:(UIImage *)arrowImage
-                  arrowPosition:(FTFoldingSectionHeaderArrowDirection)arrowPosition
+                  arrowPosition:(FTFoldingSectionHeaderArrowPosition)arrowPosition
                    sectionState:(FTFoldingSectionState)sectionState;
 
 
