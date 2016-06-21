@@ -10,7 +10,7 @@
 
 #define FTFoldingDefaultMargin                  8.0f
 #define FTFoldingDefaultIconSize                20.0f
-#define FTFoldingDefaultSepertorLineWidth       0.6f
+#define FTFoldingDefaultSepertorLineWidth       0.5f
 
 typedef NS_ENUM(NSUInteger, FTFoldingSectionState) {
     FTFoldingSectionStateFlod,
@@ -44,6 +44,7 @@ typedef NS_ENUM(NSUInteger, FTFoldingSectionHeaderArrowDirection) {
 - (UIFont *)ftFoldingTableView:(FTFoldingTableView *)ftTableView fontForDescriptionInSection:(NSInteger )section;
 - (UIColor *)ftFoldingTableView:(FTFoldingTableView *)ftTableView textColorForTitleInSection:(NSInteger )section;
 - (UIColor *)ftFoldingTableView:(FTFoldingTableView *)ftTableView textColorForDescriptionInSection:(NSInteger )section;
+- (UIImage *)ftFoldingTableView:(FTFoldingTableView *)ftTableView arrowImageForSection:(NSInteger )section;
 
 
 
@@ -76,10 +77,16 @@ typedef NS_ENUM(NSUInteger, FTFoldingSectionHeaderArrowDirection) {
 
 -(instancetype)initWithFrame:(CGRect)frame withTag:(NSInteger)tag;
 
--(void)setupWithTitleString:(NSString *)titleString
-          descriptionString:(NSString *)descriptionString
-              arrowPosition:(FTFoldingSectionHeaderArrowDirection)arrowPosition
-               sectionState:(FTFoldingSectionState)sectionState;
+-(void)setupWithBackgroundColor:(UIColor *)backgroundColor
+                    titleString:(NSString *)titleString
+                     titleColor:(UIColor *)titleColor
+                      titleFont:(UIFont *)titleFont
+              descriptionString:(NSString *)descriptionString
+               descriptionColor:(UIColor *)descriptionColor
+                descriptionFont:(UIFont *)descriptionFont
+                     arrowImage:(UIImage *)arrowImage
+                  arrowPosition:(FTFoldingSectionHeaderArrowDirection)arrowPosition
+                   sectionState:(FTFoldingSectionState)sectionState;
 
 
 

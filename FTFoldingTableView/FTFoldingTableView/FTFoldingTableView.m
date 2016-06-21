@@ -78,6 +78,74 @@
     return _statusArray;
 }
 
+
+-(FTFoldingSectionHeaderArrowDirection )perferedArrowDirection
+{
+    if (_foldingDelegate && [_foldingDelegate respondsToSelector:@selector(perferedArrowDirectionForFTFoldingTableView:)]) {
+        return [_foldingDelegate perferedArrowDirectionForFTFoldingTableView:self];
+    }
+    return FTFoldingSectionHeaderArrowDirectionRight;
+}
+-(UIColor *)backgroundColorForSection:(NSInteger )section
+{
+    if (_foldingDelegate && [_foldingDelegate respondsToSelector:@selector(ftFoldingTableView:backgroundColorForHeaderInSection:)]) {
+        return [_foldingDelegate ftFoldingTableView:self backgroundColorForHeaderInSection:section];
+    }
+    return [UIColor colorWithRed:102/255.f green:102/255.f blue:255/255.f alpha:1.f];
+}
+-(NSString *)titleForSection:(NSInteger )section
+{
+    if (_foldingDelegate && [_foldingDelegate respondsToSelector:@selector(ftFoldingTableView:titleForHeaderInSection:)]) {
+        return [_foldingDelegate ftFoldingTableView:self titleForHeaderInSection:section];
+    }
+    return [NSString string];
+}
+-(UIFont *)titleFontForSection:(NSInteger )section
+{
+    if (_foldingDelegate && [_foldingDelegate respondsToSelector:@selector(ftFoldingTableView:fontForTitleInSection:)]) {
+        return [_foldingDelegate ftFoldingTableView:self fontForTitleInSection:section];
+    }
+    return [UIFont boldSystemFontOfSize:16];
+}
+-(UIColor *)titleColorForSection:(NSInteger )section
+{
+    if (_foldingDelegate && [_foldingDelegate respondsToSelector:@selector(ftFoldingTableView:textColorForTitleInSection:)]) {
+        return [_foldingDelegate ftFoldingTableView:self textColorForTitleInSection:section];
+    }
+    return [UIColor whiteColor];
+}
+-(NSString *)descriptionForSection:(NSInteger )section
+{
+    if (_foldingDelegate && [_foldingDelegate respondsToSelector:@selector(ftFoldingTableView:descriptionForHeaderInSection:)]) {
+        return [_foldingDelegate ftFoldingTableView:self descriptionForHeaderInSection:section];
+    }
+    return [NSString string];
+}
+-(UIFont *)descriptionFontForSection:(NSInteger )section
+{
+    if (_foldingDelegate && [_foldingDelegate respondsToSelector:@selector(ftFoldingTableView:fontForDescriptionInSection:)]) {
+        return [_foldingDelegate ftFoldingTableView:self fontForDescriptionInSection:section];
+    }
+    return [UIFont boldSystemFontOfSize:16];
+}
+
+-(UIColor *)descriptionColorForSection:(NSInteger )section
+{
+    if (_foldingDelegate && [_foldingDelegate respondsToSelector:@selector(ftFoldingTableView:textColorForDescriptionInSection:)]) {
+        return [_foldingDelegate ftFoldingTableView:self textColorForDescriptionInSection:section];
+    }
+    return [UIColor whiteColor];
+}
+
+-(UIImage *)arrowImageForSection:(NSInteger )section
+{
+    if (_foldingDelegate && [_foldingDelegate respondsToSelector:@selector(ftFoldingTableView:arrowImageForSection:)]) {
+        return [_foldingDelegate ftFoldingTableView:self arrowImageForSection:section];
+    }
+    return [UIImage imageNamed:@"Arrowhead"];
+}
+
+
 #pragma mark - UITableViewDelegate,UITableViewDataSource
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -89,7 +157,7 @@
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if ([((NSNumber *)self.statusArray[section]) isEqual: @1]) {
+    if (((NSNumber *)self.statusArray[section]).integerValue == FTFoldingSectionStateShow) {
         if (_foldingDelegate && [_foldingDelegate respondsToSelector:@selector(ftFoldingTableView:numberOfRowsInSection:)]) {
             return [_foldingDelegate ftFoldingTableView:self numberOfRowsInSection:section];
         }
@@ -122,27 +190,23 @@
 }
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    if (_foldingDelegate && [_foldingDelegate respondsToSelector:@selector(ftFoldingTableView:titleForHeaderInSection:)]) {
-        NSString *titleString = [_foldingDelegate ftFoldingTableView:self titleForHeaderInSection:section];
+    FTFoldingSectionHeader *sectionHeaderView = [[FTFoldingSectionHeader alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, [self tableView:self heightForHeaderInSection:section])
+                                                                                      withTag:section];
 
-        FTFoldingSectionHeader *sectionHeaderView = [[FTFoldingSectionHeader alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, [self tableView:self heightForHeaderInSection:section])
-                                                                                          withTag:section];
-        sectionHeaderView.backgroundColor = [UIColor colorWithRed:102/255.f green:102/255.f blue:255/255.f alpha:1.f];
-        sectionHeaderView.titleLabel.textColor = [UIColor whiteColor];
-        sectionHeaderView.descriptionLabel.textColor = [UIColor whiteColor];
-        
-        
-        [sectionHeaderView setupWithTitleString:titleString
-                              descriptionString:@"description"
-                                  arrowPosition:FTFoldingSectionHeaderArrowDirectionRight
+    [sectionHeaderView setupWithBackgroundColor:[self backgroundColorForSection:section]
+                                    titleString:[self titleForSection:section]
+                                     titleColor:[self titleColorForSection:section]
+                                      titleFont:[self titleFontForSection:section]
+                              descriptionString:[self descriptionForSection:section]
+                               descriptionColor:[self descriptionColorForSection:section]
+                                descriptionFont:[self descriptionFontForSection:section]
+                                     arrowImage:[self arrowImageForSection:section]
+                                  arrowPosition:[self perferedArrowDirection]
                                    sectionState:((NSNumber *)self.statusArray[section]).integerValue];
-        
-        sectionHeaderView.tapDelegate = self;
-
-        return sectionHeaderView;
-    
-    }
-    return [[UIView alloc] init];
+     
+     sectionHeaderView.tapDelegate = self;
+     
+     return sectionHeaderView;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -215,7 +279,6 @@
     if (!_titleLabel) {
         _titleLabel = [[UILabel alloc]initWithFrame:CGRectZero];
         _titleLabel.backgroundColor = [UIColor clearColor];
-        _titleLabel.font = [UIFont boldSystemFontOfSize:16];
         _titleLabel.textAlignment = NSTextAlignmentLeft;
     }
     return _titleLabel;
@@ -225,7 +288,6 @@
     if (!_descriptionLabel) {
         _descriptionLabel = [[UILabel alloc]initWithFrame:CGRectZero];
         _descriptionLabel.backgroundColor = [UIColor clearColor];
-        _descriptionLabel.font = [UIFont systemFontOfSize:13];
         _descriptionLabel.textAlignment = NSTextAlignmentRight;
     }
     return _descriptionLabel;
@@ -236,7 +298,6 @@
         _arrowImageView = [[UIImageView alloc]initWithFrame:CGRectZero];
         _arrowImageView.backgroundColor = [UIColor clearColor];
         _arrowImageView.contentMode = UIViewContentModeScaleAspectFit;
-        _arrowImageView.image = [UIImage imageNamed:@"Arrowhead"];
     }
     return _arrowImageView;
 }
@@ -269,18 +330,38 @@
 
 
 
--(void)setupWithTitleString:(NSString *)titleString
-          descriptionString:(NSString *)descriptionString
-              arrowPosition:(FTFoldingSectionHeaderArrowDirection)arrowPosition
-               sectionState:(FTFoldingSectionState)sectionState
 
+
+-(void)setupWithBackgroundColor:(UIColor *)backgroundColor
+                    titleString:(NSString *)titleString
+                     titleColor:(UIColor *)titleColor
+                      titleFont:(UIFont *)titleFont
+              descriptionString:(NSString *)descriptionString
+               descriptionColor:(UIColor *)descriptionColor
+                descriptionFont:(UIFont *)descriptionFont
+                arrowImage:(UIImage *)arrowImage
+                  arrowPosition:(FTFoldingSectionHeaderArrowDirection)arrowPosition
+                   sectionState:(FTFoldingSectionState)sectionState
 {
+    
+    [self setBackgroundColor:backgroundColor];
     
     [self setupSubviewsWithArrowPosition:arrowPosition];
 
     
     self.titleLabel.text = titleString;
+    self.titleLabel.textColor = titleColor;
+    self.titleLabel.font = titleFont;
+
+    
+    
     self.descriptionLabel.text = descriptionString;
+    self.descriptionLabel.textColor = descriptionColor;
+    self.descriptionLabel.font = descriptionFont;
+    
+    self.arrowImageView.image = arrowImage;
+
+    
     self.arrowPosition = arrowPosition;
     self.sectionState = sectionState;
     
