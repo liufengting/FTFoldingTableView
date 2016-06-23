@@ -1,5 +1,12 @@
 # FTFoldingTableView
 
+[![Twitter](https://img.shields.io/badge/twitter-@liufengting-blue.svg?style=flat)](http://twitter.com/liufengting) 
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/liufengting/FTFoldingTableView/master/LICENSE)
+[![Version](https://img.shields.io/cocoapods/v/FTFoldingTableView.svg?style=flat)](http://cocoapods.org/pods/FTFoldingTableView)
+[![Platform](https://img.shields.io/cocoapods/p/FTFoldingTableView.svg?style=flat)](http://cocoapods.org/pods/FTFoldingTableView)
+[![CI Status](http://img.shields.io/travis/liufengting/FTFoldingTableView.svg?style=flat)](https://travis-ci.org/liufengting/FTFoldingTableView)
+[![GitHub stars](https://img.shields.io/github/stars/liufengting/FTPopOverMenu.svg)](https://github.com/liufengting/FTPopOverMenu/stargazers)
+
 FTFoldingTableView. Folding cells with simple delegates, and change UI looks in a few lines of code.
 
 
