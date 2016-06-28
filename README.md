@@ -17,6 +17,138 @@ FTFoldingTableView. Folding cells with simple delegates, and change UI looks in 
 | fold | <img src="/Screenshots/Screenshots1.png" width="320"/> | <img src="/Screenshots/Screenshots3.png" width="320"/> |
 | show | <img src="/Screenshots/Screenshots2.png" width="320"/> | <img src="/Screenshots/Screenshots4.png" width="320"/> |
 
+# Usage
+
+## Required method
+
+* perfered ArrowPosition
+
+```objective-c
+- (FTFoldingSectionHeaderArrowPosition)perferedArrowPositionForFTFoldingTableView:(FTFoldingTableView *)ftTableView
+{
+    return self.arrowPosition;
+}
+```
+* numberOfSectionForFTFoldingTableView
+
+```objective-c
+- (NSInteger )numberOfSectionForFTFoldingTableView:(FTFoldingTableView *)ftTableView
+{
+    return 5;
+}
+
+```
+* numberOfRowsInSection
+
+```objective-c
+- (NSInteger )ftFoldingTableView:(FTFoldingTableView *)ftTableView numberOfRowsInSection:(NSInteger )section
+{
+    return 3;
+}
+```
+* heightForHeaderInSection
+
+```objective-c
+- (CGFloat )ftFoldingTableView:(FTFoldingTableView *)ftTableView heightForHeaderInSection:(NSInteger )section
+{
+    return 60;
+}
+```
+* heightForRowAtIndexPath
+
+```objective-c
+- (CGFloat )ftFoldingTableView:(FTFoldingTableView *)ftTableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 50;
+}
+```
+* titleForHeaderInSection
+
+```objective-c
+- (NSString *)ftFoldingTableView:(FTFoldingTableView *)ftTableView titleForHeaderInSection:(NSInteger)section
+{
+    return [NSString stringWithFormat:@"Section %ld",section];
+}
+```
+* cellForRowAtIndexPath
+
+```objective-c
+- (UITableViewCell *)ftFoldingTableView:(FTFoldingTableView *)ftTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [ft_tableView dequeueReusableCellWithIdentifier:DemoTableViewIdentifier forIndexPath:indexPath];
+    
+    
+    return cell;
+}
+```
+* didSelectRowAtIndexPath
+
+```objective-c
+- (void )ftFoldingTableView:(FTFoldingTableView *)ftTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [ftTableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    
+}
+```
+## Optional method
+
+* descriptionForHeaderInSection
+
+```objective-c
+- (NSString *)ftFoldingTableView:(FTFoldingTableView *)ftTableView descriptionForHeaderInSection:(NSInteger )section
+{
+    return @"description";
+}
+```
+* arrowImageForSection
+
+```objective-c
+- (UIImage *)ftFoldingTableView:(FTFoldingTableView *)ftTableView arrowImageForSection:(NSInteger )section
+{
+    return [UIImage imageNamed:@"Arrowhead"];
+}
+```
+* backgroundColorForHeaderInSection
+
+```objective-c
+- (UIColor *)ftFoldingTableView:(FTFoldingTableView *)ftTableView backgroundColorForHeaderInSection:(NSInteger )section
+{
+    return [UIColor grayColor];
+}
+```
+* fontForTitleInSection
+
+```objective-c
+- (UIFont *)ftFoldingTableView:(FTFoldingTableView *)ftTableView fontForTitleInSection:(NSInteger )section
+{
+    return [UIFont boldSystemFontOfSize:16];
+}
+```
+* fontForDescriptionInSection
+
+```objective-c
+- (UIFont *)ftFoldingTableView:(FTFoldingTableView *)ftTableView fontForDescriptionInSection:(NSInteger )section
+{
+    return [UIFont systemFontOfSize:13];
+}
+```
+* textColorForTitleInSection
+
+```objective-c
+- (UIColor *)ftFoldingTableView:(FTFoldingTableView *)ftTableView textColorForTitleInSection:(NSInteger )section
+{
+    return [UIColor whiteColor];
+}
+```
+* textColorForDescriptionInSection
+
+```objective-c
+- (UIColor *)ftFoldingTableView:(FTFoldingTableView *)ftTableView textColorForDescriptionInSection:(NSInteger )section
+{
+    return [UIColor whiteColor];
+}
+```
 
 # Installation
 
