@@ -4,6 +4,7 @@
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/liufengting/FTFoldingTableView/master/LICENSE)
 [![Version](https://img.shields.io/cocoapods/v/FTFoldingTableView.svg?style=flat)](http://cocoapods.org/pods/FTFoldingTableView)
 [![Platform](https://img.shields.io/cocoapods/p/FTFoldingTableView.svg?style=flat)](http://cocoapods.org/pods/FTFoldingTableView)
+[![CocoaPods](https://img.shields.io/cocoapods/dt/FTFoldingTableView.svg?maxAge=2592000)](http://cocoapods.org/pods/FTFoldingTableView)
 [![CI Status](http://img.shields.io/travis/liufengting/FTFoldingTableView.svg?style=flat)](https://travis-ci.org/liufengting/FTFoldingTableView)
 [![GitHub stars](https://img.shields.io/github/stars/liufengting/FTPopOverMenu.svg)](https://github.com/liufengting/FTPopOverMenu/stargazers)
 
@@ -163,7 +164,7 @@ FTFoldingTableView. Folding cells with simple delegates, and change UI looks in 
 FTFoldingTableView is available through [CocoaPods](http://cocoapods.org). To install it, simply add the following line to your Podfile:
 
 ```ruby
-pod 'FTFoldingTableView', '~> 0.0.2'
+pod 'FTFoldingTableView'
 ```
 
 
