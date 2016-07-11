@@ -8,6 +8,14 @@
 
 #import "FTFoldingTableView.h"
 
+#pragma mark - Constants
+/**
+ *  Constants
+ */
+#define FTFoldingDefaultMargin                  8.0f
+#define FTFoldingDefaultIconSize                24.0f
+#define FTFoldingDefaultSepertorLineWidth       0.5f
+
 #pragma mark - FTFoldingTableView
 
 @interface FTFoldingTableView ()
@@ -361,14 +369,11 @@
     
     [self setBackgroundColor:backgroundColor];
     
-    [self setupSubviewsWithArrowPosition:arrowPosition];
-    
+    [self setupSubviewsWithArrowPosition:arrowPosition];    
     
     self.titleLabel.text = titleString;
     self.titleLabel.textColor = titleColor;
     self.titleLabel.font = titleFont;
-    
-    
     
     self.descriptionLabel.text = descriptionString;
     self.descriptionLabel.textColor = descriptionColor;
