@@ -20,9 +20,9 @@ FTFoldingTableView. Folding cells with simple delegates, and change UI looks in 
 
 # Usage
 
-## Required method
+## Required Methods
 
-* perfered ArrowPosition
+* preferred ArrowPosition
 
 ```objective-c
 - (FTFoldingSectionHeaderArrowPosition)perferedArrowPositionForFTFoldingTableView:(FTFoldingTableView *)ftTableView
@@ -92,7 +92,7 @@ FTFoldingTableView. Folding cells with simple delegates, and change UI looks in 
     
 }
 ```
-## Optional method
+## Optional Methods
 
 * descriptionForHeaderInSection
 
@@ -171,7 +171,5 @@ pod 'FTFoldingTableView'
 
 # Need to know
 
-* 2016.06.21. I recently upgrade my Xcode to 8.0 beta, so Xcode version below 8.0 may not be able to open the storyboard or run the demo project. It will be fixed soon.
-* I use two day to finish this project, and uploaded it to Cocoapods. Therefore I don't have enough time to test it, if you have any questions, please let me know. I'll fill this README in the near future.
-
-
+* 2016.06.21. I recently upgraded to Xcode 8.0 beta, so Xcode versions below 8.0 may not be able to open the storyboard or run the demo project. It will be fixed soon.
+* I used two days to finish this project, and then uploaded it to Cocoapods, so I didn't have enough time to test it;if you have any questions, please let me know. I'll fill this README in the near future.
