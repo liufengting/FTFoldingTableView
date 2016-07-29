@@ -6,7 +6,7 @@
 [![Platform](https://img.shields.io/cocoapods/p/FTFoldingTableView.svg?style=flat)](http://cocoapods.org/pods/FTFoldingTableView)
 [![CocoaPods](https://img.shields.io/cocoapods/dt/FTFoldingTableView.svg?maxAge=2592000)](http://cocoapods.org/pods/FTFoldingTableView)
 [![CI Status](http://img.shields.io/travis/liufengting/FTFoldingTableView.svg?style=flat)](https://travis-ci.org/liufengting/FTFoldingTableView)
-[![GitHub stars](https://img.shields.io/github/stars/liufengting/FTPopOverMenu.svg)](https://github.com/liufengting/FTPopOverMenu/stargazers)
+[![GitHub stars](https://img.shields.io/github/stars/liufengting/FTFoldingTableView.svg)](https://github.com/liufengting/FTFoldingTableView/stargazers)
 
 FTFoldingTableView. Folding cells with simple delegates, and change UI looks in a few lines of code.
 
@@ -173,3 +173,5 @@ pod 'FTFoldingTableView'
 
 * 2016.06.21. I recently upgraded to Xcode 8.0 beta, so Xcode versions below 8.0 may not be able to open the storyboard or run the demo project. It will be fixed soon.
 * I used two days to finish this project, and then uploaded it to Cocoapods, so I didn't have enough time to test it;if you have any questions, please let me know. I'll fill this README in the near future.
+
+
