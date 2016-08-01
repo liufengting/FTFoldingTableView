@@ -204,7 +204,9 @@ typedef NS_ENUM(NSUInteger, FTFoldingSectionHeaderArrowPosition) {
  *  FTFoldingTableView
  */
 @interface FTFoldingTableView : UITableView <UITableViewDelegate,UITableViewDataSource,FTFoldingSectionHeaderDelegate>
-
+/**
+ *  FTFoldingTableViewDelegate foldingDelegate
+ */
 @property (nonatomic, strong)id<FTFoldingTableViewDelegate> foldingDelegate;
 
 @end
@@ -216,9 +218,29 @@ typedef NS_ENUM(NSUInteger, FTFoldingSectionHeaderArrowPosition) {
 @interface FTFoldingSectionHeader : UIView
 
 @property (nonatomic, strong)id<FTFoldingSectionHeaderDelegate> tapDelegate;
-
+/**
+ *  initWithFrame
+ *
+ *  @param frame frame
+ *  @param tag   tag
+ *
+ *  @return instancetype
+ */
 -(instancetype)initWithFrame:(CGRect)frame withTag:(NSInteger)tag;
-
+/**
+ *  setup
+ *
+ *  @param backgroundColor   UIColor
+ *  @param titleString       NSString
+ *  @param titleColor        UIColor
+ *  @param titleFont         UIFont
+ *  @param descriptionString NSString
+ *  @param descriptionColor  UIColor
+ *  @param descriptionFont   UIFont
+ *  @param arrowImage        UIImage
+ *  @param arrowPosition     FTFoldingSectionHeaderArrowPosition
+ *  @param sectionState      FTFoldingSectionState
+ */
 -(void)setupWithBackgroundColor:(UIColor *)backgroundColor
                     titleString:(NSString *)titleString
                      titleColor:(UIColor *)titleColor

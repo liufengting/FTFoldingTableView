@@ -17,7 +17,9 @@
 #define FTFoldingDefaultSepertorLineWidth       0.5f
 
 #pragma mark - FTFoldingTableView
-
+/**
+ *  FTFoldingTableView
+ */
 @interface FTFoldingTableView ()
 
 @property (nonatomic, strong)NSMutableArray *statusArray;
@@ -268,7 +270,9 @@
 @end
 
 #pragma mark - FTFoldingSectionHeader
-
+/**
+ *  FTFoldingSectionHeader
+ */
 @interface FTFoldingSectionHeader ()
 
 @property (nonatomic, strong)UILabel *titleLabel;

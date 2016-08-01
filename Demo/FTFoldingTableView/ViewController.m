@@ -9,11 +9,8 @@
 #import "ViewController.h"
 #import "FTFoldingTableView.h"
 
-
-
-static NSString *SectionHeaderViewIdentifier = @"SectionHeaderViewIdentifier";
-
-static NSString *DemoTableViewIdentifier = @"DemoTableViewIdentifier";
+static NSString *SectionHeaderViewIdentifier    = @"SectionHeaderViewIdentifier";
+static NSString *DemoTableViewIdentifier        = @"DemoTableViewIdentifier";
 
 @interface ViewController () <FTFoldingTableViewDelegate>
 
