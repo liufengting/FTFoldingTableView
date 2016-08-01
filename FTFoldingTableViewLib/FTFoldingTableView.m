@@ -8,8 +8,18 @@
 
 #import "FTFoldingTableView.h"
 
-#pragma mark - FTFoldingTableView
+#pragma mark - Constants
+/**
+ *  Constants
+ */
+#define FTFoldingDefaultMargin                  8.0f
+#define FTFoldingDefaultIconSize                24.0f
+#define FTFoldingDefaultSepertorLineWidth       0.3f
 
+#pragma mark - FTFoldingTableView
+/**
+ *  FTFoldingTableView
+ */
 @interface FTFoldingTableView ()
 
 @property (nonatomic, strong)NSMutableArray *statusArray;
@@ -64,6 +74,10 @@
     if (self.style == UITableViewStylePlain) {
         self.tableFooterView = [[UIView alloc] init];
     }
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(onChangeStatusBarOrientationNotification:)
+                                                 name:UIApplicationDidChangeStatusBarOrientationNotification
+                                               object:nil];
 }
 
 -(NSMutableArray *)statusArray
@@ -85,6 +99,13 @@
         }
     }
     return _statusArray;
+}
+
+-(void)onChangeStatusBarOrientationNotification:(NSNotification *)notification
+{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self reloadData];
+    });
 }
 
 #pragma mark - UI Configration
@@ -260,7 +281,9 @@
 @end
 
 #pragma mark - FTFoldingSectionHeader
-
+/**
+ *  FTFoldingSectionHeader
+ */
 @interface FTFoldingSectionHeader ()
 
 @property (nonatomic, strong)UILabel *titleLabel;
@@ -361,14 +384,11 @@
     
     [self setBackgroundColor:backgroundColor];
     
-    [self setupSubviewsWithArrowPosition:arrowPosition];
-    
+    [self setupSubviewsWithArrowPosition:arrowPosition];    
     
     self.titleLabel.text = titleString;
     self.titleLabel.textColor = titleColor;
     self.titleLabel.font = titleFont;
-    
-    
     
     self.descriptionLabel.text = descriptionString;
     self.descriptionLabel.textColor = descriptionColor;
