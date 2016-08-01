@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "FTFoldingTableView"
-  s.version      = "1.0.1"
+  s.version      = "1.0.3"
   s.summary      = "Folding cells with simple delegates, and change UI looks in a few lines of code."
   s.description  = <<-DESC
       FTFoldingTableView.Folding cells with simple delegates, and change UI looks in a few lines of code. I recently developed this for future use.
