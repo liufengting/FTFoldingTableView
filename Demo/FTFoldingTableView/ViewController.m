@@ -25,6 +25,8 @@ static NSString *DemoTableViewIdentifier        = @"DemoTableViewIdentifier";
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    
     self.arrowPosition = FTFoldingSectionHeaderArrowPositionLeft;
     
     self.ft_tableView.foldingDelegate = self;
