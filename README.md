@@ -171,7 +171,6 @@ pod 'FTFoldingTableView'
 
 # Need to know
 
-* 2016.06.21. I recently upgraded to Xcode 8.0 beta, so Xcode versions below 8.0 may not be able to open the storyboard or run the demo project. It will be fixed soon.
 * I used two days to finish this project, and then uploaded it to Cocoapods, so I didn't have enough time to test it;if you have any questions, please let me know. I'll fill this README in the near future.
 
 
