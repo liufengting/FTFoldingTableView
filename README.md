@@ -157,7 +157,7 @@ FTFoldingTableView. Folding cells with simple delegates, and change UI looks in 
 
 * clone this repo.
 * Simply drop the '/FTFoldingTableViewLib' folder into your project.
-* Enjoy! 🍺
+* Enjoy!
 
 ## Cocoapods
 
