@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5A0DF8191D4F97DA004502A3 /* Arrowhead.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A0DF8161D4F97DA004502A3 /* Arrowhead.png */; };
-		5A0DF81A1D4F97DA004502A3 /* FTFoldingTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A0DF8181D4F97DA004502A3 /* FTFoldingTableView.m */; };
+		2ABD2C521E44520F00EBB748 /* Arrowhead.png in Resources */ = {isa = PBXBuildFile; fileRef = 2ABD2C4F1E44520F00EBB748 /* Arrowhead.png */; };
+		2ABD2C531E44520F00EBB748 /* FTFoldingTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ABD2C511E44520F00EBB748 /* FTFoldingTableView.m */; };
 		5A4B4FB41D4F3D3200134E33 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5A4B4FB31D4F3D3200134E33 /* Main.storyboard */; };
 		5AB106C81D178925003E69E4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AB106C71D178925003E69E4 /* main.m */; };
 		5AB106CB1D178925003E69E4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AB106CA1D178925003E69E4 /* AppDelegate.m */; };
@@ -29,9 +29,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		5A0DF8161D4F97DA004502A3 /* Arrowhead.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Arrowhead.png; sourceTree = "<group>"; };
-		5A0DF8171D4F97DA004502A3 /* FTFoldingTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTFoldingTableView.h; sourceTree = "<group>"; };
-		5A0DF8181D4F97DA004502A3 /* FTFoldingTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTFoldingTableView.m; sourceTree = "<group>"; };
+		2ABD2C4F1E44520F00EBB748 /* Arrowhead.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Arrowhead.png; sourceTree = "<group>"; };
+		2ABD2C501E44520F00EBB748 /* FTFoldingTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTFoldingTableView.h; sourceTree = "<group>"; };
+		2ABD2C511E44520F00EBB748 /* FTFoldingTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTFoldingTableView.m; sourceTree = "<group>"; };
 		5A4B4FB31D4F3D3200134E33 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		5AB106C31D178925003E69E4 /* FTFoldingTableView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FTFoldingTableView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5AB106C71D178925003E69E4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -65,15 +65,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		5A0DF8151D4F97DA004502A3 /* FTFoldingTableViewLib */ = {
+		2ABD2C4E1E44520F00EBB748 /* FTFoldingTableView */ = {
 			isa = PBXGroup;
 			children = (
-				5A0DF8161D4F97DA004502A3 /* Arrowhead.png */,
-				5A0DF8171D4F97DA004502A3 /* FTFoldingTableView.h */,
-				5A0DF8181D4F97DA004502A3 /* FTFoldingTableView.m */,
+				2ABD2C4F1E44520F00EBB748 /* Arrowhead.png */,
+				2ABD2C501E44520F00EBB748 /* FTFoldingTableView.h */,
+				2ABD2C511E44520F00EBB748 /* FTFoldingTableView.m */,
 			);
-			name = FTFoldingTableViewLib;
-			path = ../../FTFoldingTableViewLib;
+			name = FTFoldingTableView;
+			path = ../../FTFoldingTableView;
 			sourceTree = "<group>";
 		};
 		5AB106BA1D178925003E69E4 = {
@@ -97,7 +97,7 @@
 		5AB106C51D178925003E69E4 /* FTFoldingTableView */ = {
 			isa = PBXGroup;
 			children = (
-				5A0DF8151D4F97DA004502A3 /* FTFoldingTableViewLib */,
+				2ABD2C4E1E44520F00EBB748 /* FTFoldingTableView */,
 				5AB106C91D178925003E69E4 /* AppDelegate.h */,
 				5AB106CA1D178925003E69E4 /* AppDelegate.m */,
 				5AB106CC1D178925003E69E4 /* ViewController.h */,
@@ -211,7 +211,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5AB106D61D178925003E69E4 /* LaunchScreen.storyboard in Resources */,
-				5A0DF8191D4F97DA004502A3 /* Arrowhead.png in Resources */,
+				2ABD2C521E44520F00EBB748 /* Arrowhead.png in Resources */,
 				5AB106D31D178925003E69E4 /* Assets.xcassets in Resources */,
 				5A4B4FB41D4F3D3200134E33 /* Main.storyboard in Resources */,
 			);
@@ -234,7 +234,7 @@
 				5AB106CE1D178925003E69E4 /* ViewController.m in Sources */,
 				5AB106CB1D178925003E69E4 /* AppDelegate.m in Sources */,
 				5AB106C81D178925003E69E4 /* main.m in Sources */,
-				5A0DF81A1D4F97DA004502A3 /* FTFoldingTableView.m in Sources */,
+				2ABD2C531E44520F00EBB748 /* FTFoldingTableView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
