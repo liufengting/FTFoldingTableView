@@ -2,8 +2,8 @@
 //  AppDelegate.m
 //  FTFoldingTableView
 //
-//  Created by liufengting https://github.com/liufengting on 16/6/20.
-//  Copyright © 2016年 liufengting. All rights reserved.
+//  Created by liufengting on 16/6/20.
+//  Copyright © 2016 LiuFengting <https://github.com/liufengting>. All rights reserved.
 //
 
 #import "AppDelegate.h"

@@ -2,8 +2,8 @@
 //  FTFoldingTableView.m
 //  FTFoldingTableView
 //
-//  Created by liufengting https://github.com/liufengting on 16/6/20.
-//  Copyright © 2016年 liufengting. All rights reserved.
+//  Created by liufengting on 16/6/20.
+//  Copyright © 2016 LiuFengting <https://github.com/liufengting>. All rights reserved.
 //
 
 #import "FTFoldingTableView.h"
@@ -157,7 +157,7 @@
     if (_foldingDelegate && [_foldingDelegate respondsToSelector:@selector(ftFoldingTableView:fontForDescriptionInSection:)]) {
         return [_foldingDelegate ftFoldingTableView:self fontForDescriptionInSection:section];
     }
-    return [UIFont boldSystemFontOfSize:13];
+    return [UIFont systemFontOfSize:13];
 }
 
 -(UIColor *)descriptionColorForSection:(NSInteger )section
@@ -217,7 +217,7 @@
     if (self.style == UITableViewStylePlain) {
         return 0;
     }else{
-        return 0.001;
+        return 0.01;
     }
 }
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
@@ -260,6 +260,12 @@
 {
     BOOL currentIsOpen = ((NSNumber *)self.statusArray[index]).boolValue;
     
+    if (_foldingDelegate && [_foldingDelegate respondsToSelector:@selector(ftFoldingTableView:willChangeToSectionState:section:)]) {
+        [_foldingDelegate ftFoldingTableView:self
+                    willChangeToSectionState:(currentIsOpen == YES) ? FTFoldingSectionStateFlod : FTFoldingSectionStateShow
+                                     section:index];
+    }
+
     [self.statusArray replaceObjectAtIndex:index withObject:[NSNumber numberWithBool:!currentIsOpen]];
     
     NSInteger numberOfRow = [_foldingDelegate ftFoldingTableView:self numberOfRowsInSection:index];
@@ -289,7 +295,7 @@
 @property (nonatomic, strong)UILabel *titleLabel;
 @property (nonatomic, strong)UILabel *descriptionLabel;
 @property (nonatomic, strong)UIImageView *arrowImageView;
-@property (nonatomic, strong)CAShapeLayer *sepertorLine;
+@property (nonatomic, strong)UIView *sepertorLine;
 @property (nonatomic, assign)FTFoldingSectionHeaderArrowPosition arrowPosition;
 @property (nonatomic, assign)FTFoldingSectionState sectionState;
 @property (nonatomic, strong)UITapGestureRecognizer *tapGesture;
@@ -342,12 +348,12 @@
     }
     return _arrowImageView;
 }
--(CAShapeLayer *)sepertorLine
+-(UIView *)sepertorLine
 {
     if (!_sepertorLine) {
-        _sepertorLine = [CAShapeLayer layer];
-        _sepertorLine.strokeColor = [UIColor whiteColor].CGColor;
-        _sepertorLine.lineWidth = FTFoldingDefaultSepertorLineWidth;
+        _sepertorLine = [[UIView alloc]initWithFrame:CGRectZero];
+        _sepertorLine.backgroundColor = [UIColor whiteColor];
+        //        _sepertorLine.lineWidth = FTFoldingDefaultSepertorLineWidth;
     }
     return _sepertorLine;
 }
@@ -360,14 +366,14 @@
     return _tapGesture;
 }
 
--(UIBezierPath *)getSepertorPath
-{
-    UIBezierPath *path = [UIBezierPath bezierPath];
-    [path moveToPoint:CGPointMake(0, self.frame.size.height - FTFoldingDefaultSepertorLineWidth)];
-    [path addLineToPoint:CGPointMake(self.frame.size.width, self.frame.size.height - FTFoldingDefaultSepertorLineWidth)];
-    [path stroke];
-    return path;
-}
+//-(UIBezierPath *)getSepertorPath
+//{
+//    UIBezierPath *path = [UIBezierPath bezierPath];
+//    [path moveToPoint:CGPointMake(0, self.frame.size.height - FTFoldingDefaultSepertorLineWidth)];
+//    [path addLineToPoint:CGPointMake(self.frame.size.width, self.frame.size.height - FTFoldingDefaultSepertorLineWidth)];
+//    [path stroke];
+//    return path;
+//}
 
 
 -(void)setupWithBackgroundColor:(UIColor *)backgroundColor
@@ -384,7 +390,7 @@
     
     [self setBackgroundColor:backgroundColor];
     
-    [self setupSubviewsWithArrowPosition:arrowPosition];    
+    [self setupSubviewsWithArrowPosition:arrowPosition];
     
     self.titleLabel.text = titleString;
     self.titleLabel.textColor = titleColor;
@@ -420,6 +426,7 @@
     CGRect arrowRect = CGRectMake(0, (self.frame.size.height - FTFoldingDefaultIconSize)/2, FTFoldingDefaultIconSize, FTFoldingDefaultIconSize);
     CGRect titleRect = CGRectMake(FTFoldingDefaultMargin + FTFoldingDefaultIconSize, 0, labelWidth, labelHeight);
     CGRect descriptionRect = CGRectMake(FTFoldingDefaultMargin + FTFoldingDefaultIconSize + labelWidth,  0, labelWidth, labelHeight);
+    CGRect lineRect = CGRectMake(0, self.bounds.size.height - FTFoldingDefaultSepertorLineWidth, self.bounds.size.width, FTFoldingDefaultSepertorLineWidth);
     if (arrowPosition == FTFoldingSectionHeaderArrowPositionRight) {
         arrowRect.origin.x = FTFoldingDefaultMargin*2 + labelWidth*2;
         titleRect.origin.x = FTFoldingDefaultMargin;
@@ -429,13 +436,14 @@
     [self.titleLabel setFrame:titleRect];
     [self.descriptionLabel setFrame:descriptionRect];
     [self.arrowImageView setFrame:arrowRect];
-    [self.sepertorLine setPath:[self getSepertorPath].CGPath];
+    [self.sepertorLine setFrame:lineRect];
+    
     
     [self addSubview:self.titleLabel];
     [self addSubview:self.descriptionLabel];
     [self addSubview:self.arrowImageView];
     [self addGestureRecognizer:self.tapGesture];
-    [self.layer addSublayer:self.sepertorLine];
+    [self addSubview:self.sepertorLine];
     
 }
 
@@ -475,3 +483,4 @@
 }
 
 @end
+

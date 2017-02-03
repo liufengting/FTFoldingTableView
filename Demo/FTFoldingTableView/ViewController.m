@@ -2,8 +2,8 @@
 //  ViewController.m
 //  FTFoldingTableView
 //
-//  Created by liufengting https://github.com/liufengting on 16/6/20.
-//  Copyright © 2016年 liufengting. All rights reserved.
+//  Created by liufengting on 16/6/20.
+//  Copyright © 2016 LiuFengting <https://github.com/liufengting>. All rights reserved.
 //
 
 #import "ViewController.h"
@@ -80,6 +80,11 @@ static NSString *DemoTableViewIdentifier        = @"DemoTableViewIdentifier";
 }
 
 #pragma mark - FTFoldingTableViewDelegate / optional delegates, change almost everything using delegate
+
+- (void)ftFoldingTableView:(FTFoldingTableView *)ftTableView willChangeToSectionState:(FTFoldingSectionState)sectionState section:(NSInteger)section
+{
+    NSLog(@"section: %ld is about to %@", section, sectionState == FTFoldingSectionStateFlod ? @"close" : @"open");
+}
 
 - (NSString *)ftFoldingTableView:(FTFoldingTableView *)ftTableView descriptionForHeaderInSection:(NSInteger )section
 {
