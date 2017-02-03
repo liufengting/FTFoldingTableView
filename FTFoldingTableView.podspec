@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "FTFoldingTableView"
-  s.version      = "1.0.6"
+  s.version      = "1.0.7"
   s.summary      = "Folding cells with simple delegates, and change UI looks in a few lines of code."
   s.description  = <<-DESC
       FTFoldingTableView.Folding cells with simple delegates, and change UI looks in a few lines of code. I recently developed this for future use.
@@ -13,7 +13,7 @@ Pod::Spec.new do |s|
   s.social_media_url   = "http://twitter.com/liufengting"
   s.platform     = :ios
   s.source       = { :git => "https://github.com/liufengting/FTFoldingTableView.git", :tag => "#{s.version}" }
-  s.source_files = "FTFoldingTableViewLib/*.{h,m}"
-  s.resources = "FTFoldingTableViewLib/*.{png}"
+  s.source_files = "FTFoldingTableView/*.{h,m}"
+  s.resources = "FTFoldingTableView/*.{png}"
 
 end
