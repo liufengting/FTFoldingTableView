@@ -10,30 +10,30 @@
 
 #pragma mark - ENUM FTFoldingSectionState
 /**
- *  FTFoldingSectionState
+ FTFoldingSectionState
  */
 typedef NS_ENUM(NSUInteger, FTFoldingSectionState) {
     /**
-     *  section state flod
+     section state flod
      */
     FTFoldingSectionStateFlod,
     /**
-     *  section state show
+     section state show
      */
     FTFoldingSectionStateShow,
 };
 
 #pragma mark - ENUM FTFoldingSectionHeaderArrowPosition
 /**
- *  FTFoldingSectionHeaderArrowPosition
+ FTFoldingSectionHeaderArrowPosition
  */
 typedef NS_ENUM(NSUInteger, FTFoldingSectionHeaderArrowPosition) {
     /**
-     *  arrow position left
+     arrow position left
      */
     FTFoldingSectionHeaderArrowPositionLeft,
     /**
-     *  arrow position right
+     arrow position right
      */
     FTFoldingSectionHeaderArrowPositionRight,
 };
@@ -49,73 +49,66 @@ typedef NS_ENUM(NSUInteger, FTFoldingSectionHeaderArrowPosition) {
 
 @required
 /**
- *  perferedArrowPositionForFTFoldingTableView
- *
- *  @param ftTableView FTFoldingTableView
- *
- *  @return FTFoldingSectionHeaderArrowPosition
+ perferedArrowPositionForFTFoldingTableView
+
+ @param ftTableView FTFoldingTableView
+ @return FTFoldingSectionHeaderArrowPosition
  */
 - (FTFoldingSectionHeaderArrowPosition)perferedArrowPositionForFTFoldingTableView:(FTFoldingTableView *)ftTableView;
 /**
- *  numberOfSectionForFTFoldingTableView
- *
- *  @param ftTableView FTFoldingTableView
- *
- *  @return NSInteger
+ numberOfSectionForFTFoldingTableView
+
+ @param ftTableView FTFoldingTableView
+ @return NSInteger
  */
-- (NSInteger )numberOfSectionForFTFoldingTableView:(FTFoldingTableView *)ftTableView;
+- (NSInteger)numberOfSectionForFTFoldingTableView:(FTFoldingTableView *)ftTableView;
 /**
- *  numberOfRowsInSection
- *
- *  @param ftTableView FTFoldingTableView
- *  @param section     NSInteger
- *
- *  @return NSInteger
+ numberOfRowsInSection
+
+ @param ftTableView FTFoldingTableView
+ @param section NSInteger
+ @return NSInteger
  */
-- (NSInteger )ftFoldingTableView:(FTFoldingTableView *)ftTableView numberOfRowsInSection:(NSInteger )section;
+- (NSInteger)ftFoldingTableView:(FTFoldingTableView *)ftTableView numberOfRowsInSection:(NSInteger)section;
 /**
- *  heightForHeaderInSection
- *
- *  @param ftTableView FTFoldingTableView
- *  @param section     NSInteger
- *
- *  @return CGFloat
+ heightForHeaderInSection
+
+ @param ftTableView FTFoldingTableView
+ @param section NSInteger
+ @return CGFloat
  */
-- (CGFloat )ftFoldingTableView:(FTFoldingTableView *)ftTableView heightForHeaderInSection:(NSInteger )section;
+- (CGFloat)ftFoldingTableView:(FTFoldingTableView *)ftTableView heightForHeaderInSection:(NSInteger)section;
 /**
- *  heightForRowAtIndexPath
- *
- *  @param ftTableView FTFoldingTableView
- *  @param indexPath   NSIndexPath
- *
- *  @return CGFloat
+ heightForRowAtIndexPath
+
+ @param ftTableView FTFoldingTableView
+ @param indexPath NSIndexPath
+ @return CGFloat
  */
-- (CGFloat )ftFoldingTableView:(FTFoldingTableView *)ftTableView heightForRowAtIndexPath:(NSIndexPath *)indexPath;
+- (CGFloat)ftFoldingTableView:(FTFoldingTableView *)ftTableView heightForRowAtIndexPath:(NSIndexPath *)indexPath;
 /**
- *  titleForHeaderInSection
- *
- *  @param ftTableView FTFoldingTableView
- *  @param section     NSInteger
- *
- *  @return NSString
+ titleForHeaderInSection
+
+ @param ftTableView FTFoldingTableView
+ @param section NSInteger
+ @return NSString
  */
-- (NSString *)ftFoldingTableView:(FTFoldingTableView *)ftTableView titleForHeaderInSection:(NSInteger )section;
+- (NSString *)ftFoldingTableView:(FTFoldingTableView *)ftTableView titleForHeaderInSection:(NSInteger)section;
 /**
- *  cellForRowAtIndexPath
- *
- *  @param ftTableView FTFoldingTableView
- *  @param indexPath   NSIndexPath
- *
- *  @return UITableViewCell
+ cellForRowAtIndexPath
+
+ @param ftTableView FTFoldingTableView
+ @param indexPath NSIndexPath
+ @return UITableViewCell
  */
 - (UITableViewCell *)ftFoldingTableView:(FTFoldingTableView *)ftTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath;
 /**
- *  didSelectRowAtIndexPath
- *
- *  @param ftTableView FTFoldingTableView
- *  @param indexPath   NSIndexPath
+ didSelectRowAtIndexPath
+
+ @param ftTableView FTFoldingTableView
+ @param indexPath NSIndexPath
  */
-- (void )ftFoldingTableView:(FTFoldingTableView *)ftTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath;
+- (void)ftFoldingTableView:(FTFoldingTableView *)ftTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath;
 
 @optional
 
@@ -128,82 +121,81 @@ typedef NS_ENUM(NSUInteger, FTFoldingSectionHeaderArrowPosition) {
  @param section section
  */
 - (void)ftFoldingTableView:(FTFoldingTableView *)ftTableView willChangeToSectionState:(FTFoldingSectionState)sectionState section:(NSInteger)section;
+/**
+ arrowImageForSection
 
-/**
- *  arrowImageForSection
- *
- *  @param ftTableView FTFoldingTableView
- *  @param section     NSInteger
- *
- *  @return UIImage
+ @param ftTableView FTFoldingTableView
+ @param section NSInteger
+ @return UIImage
  */
-- (UIImage *)ftFoldingTableView:(FTFoldingTableView *)ftTableView arrowImageForSection:(NSInteger )section;
+- (UIImage *)ftFoldingTableView:(FTFoldingTableView *)ftTableView arrowImageForSection:(NSInteger)section;
 /**
- *  descriptionForHeaderInSection
- *
- *  @param ftTableView FTFoldingTableView
- *  @param section     NSInteger
- *
- *  @return NSString
+ descriptionForHeaderInSection
+
+ @param ftTableView FTFoldingTableView
+ @param section NSInteger
+ @return NSString
  */
-- (NSString *)ftFoldingTableView:(FTFoldingTableView *)ftTableView descriptionForHeaderInSection:(NSInteger )section;
+- (NSString *)ftFoldingTableView:(FTFoldingTableView *)ftTableView descriptionForHeaderInSection:(NSInteger)section;
 /**
- *  backgroundColorForHeaderInSection
- *
- *  @param ftTableView FTFoldingTableView
- *  @param section     NSInteger
- *
- *  @return UIColor
+ backgroundColorForHeaderInSection
+
+ @param ftTableView FTFoldingTableView
+ @param section NSInteger
+ @return UIColor
  */
-- (UIColor *)ftFoldingTableView:(FTFoldingTableView *)ftTableView backgroundColorForHeaderInSection:(NSInteger )section;
+- (UIColor *)ftFoldingTableView:(FTFoldingTableView *)ftTableView backgroundColorForHeaderInSection:(NSInteger)section;
 /**
- *  fontForTitleInSection
- *
- *  @param ftTableView FTFoldingTableView
- *  @param section     NSInteger
- *
- *  @return UIFont
+ fontForTitleInSection
+
+ @param ftTableView FTFoldingTableView
+ @param section NSInteger
+ @return UIFont
  */
-- (UIFont *)ftFoldingTableView:(FTFoldingTableView *)ftTableView fontForTitleInSection:(NSInteger )section;
+- (UIFont *)ftFoldingTableView:(FTFoldingTableView *)ftTableView fontForTitleInSection:(NSInteger)section;
 /**
- *  fontForDescriptionInSection
- *
- *  @param ftTableView FTFoldingTableView
- *  @param section     NSInteger
- *
- *  @return UIFont
+ fontForDescriptionInSection
+
+ @param ftTableView FTFoldingTableView
+ @param section NSInteger
+ @return UIFont
  */
-- (UIFont *)ftFoldingTableView:(FTFoldingTableView *)ftTableView fontForDescriptionInSection:(NSInteger )section;
+- (UIFont *)ftFoldingTableView:(FTFoldingTableView *)ftTableView fontForDescriptionInSection:(NSInteger)section;
 /**
- *  textColorForTitleInSection
- *
- *  @param ftTableView FTFoldingTableView
- *  @param section     NSInteger
- *
- *  @return UIColor
+ textColorForTitleInSection
+
+ @param ftTableView FTFoldingTableView
+ @param section NSInteger
+ @return UIColor
  */
-- (UIColor *)ftFoldingTableView:(FTFoldingTableView *)ftTableView textColorForTitleInSection:(NSInteger )section;
+- (UIColor *)ftFoldingTableView:(FTFoldingTableView *)ftTableView textColorForTitleInSection:(NSInteger)section;
 /**
- *  textColorForDescriptionInSection
- *
- *  @param ftTableView FTFoldingTableView
- *  @param section     NSInteger
- *
- *  @return UIColor
+ textColorForDescriptionInSection
+
+ @param ftTableView FTFoldingTableView
+ @param section NSInteger
+ @return UIColor
  */
-- (UIColor *)ftFoldingTableView:(FTFoldingTableView *)ftTableView textColorForDescriptionInSection:(NSInteger )section;
+- (UIColor *)ftFoldingTableView:(FTFoldingTableView *)ftTableView textColorForDescriptionInSection:(NSInteger)section;
+/**
+ didDeselectRowAtIndexPath
+ 
+ @param ftTableView FTFoldingTableView
+ @param indexPath NSIndexPath
+ */
+- (void)ftFoldingTableView:(FTFoldingTableView *)ftTableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath;
 
 @end
 
 #pragma mark - FTFoldingSectionHeaderDelegate
 /**
- *  FTFoldingSectionHeaderDelegate
+ FTFoldingSectionHeaderDelegate
  */
 @protocol FTFoldingSectionHeaderDelegate <NSObject>
 /**
- *  ftFoldingSectionHeaderTappedAtIndex
- *
- *  @param index NSInteger
+ ftFoldingSectionHeaderTappedAtIndex
+
+ @param index NSInteger
  */
 - (void)ftFoldingSectionHeaderTappedAtIndex:(NSInteger)index;
 
@@ -211,47 +203,47 @@ typedef NS_ENUM(NSUInteger, FTFoldingSectionHeaderArrowPosition) {
 
 #pragma mark - FTFoldingTableView
 /**
- *  FTFoldingTableView
+ FTFoldingTableView
  */
 @interface FTFoldingTableView : UITableView <UITableViewDelegate,UITableViewDataSource,FTFoldingSectionHeaderDelegate>
 /**
- *  FTFoldingTableViewDelegate foldingDelegate
+ FTFoldingTableViewDelegate foldingDelegate
  */
-@property (nonatomic, strong)id<FTFoldingTableViewDelegate> foldingDelegate;
+@property (nonatomic, weak) id<FTFoldingTableViewDelegate> foldingDelegate;
 
 @end
 
 #pragma mark - FTFoldingSectionHeader
+
 /**
- *  FTFoldingSectionHeader
+ FTFoldingSectionHeader
  */
 @interface FTFoldingSectionHeader : UIView
 
-@property (nonatomic, strong)id<FTFoldingSectionHeaderDelegate> tapDelegate;
+@property (nonatomic, weak) id<FTFoldingSectionHeaderDelegate> tapDelegate;
 /**
- *  initWithFrame
- *
- *  @param frame frame
- *  @param tag   tag
- *
- *  @return instancetype
+ initWithFrame
+
+ @param frame CGRect
+ @param tag NSInteger
+ @return instancetype
  */
--(instancetype)initWithFrame:(CGRect)frame withTag:(NSInteger)tag;
+- (instancetype)initWithFrame:(CGRect)frame withTag:(NSInteger)tag;
 /**
- *  setup
- *
- *  @param backgroundColor   UIColor
- *  @param titleString       NSString
- *  @param titleColor        UIColor
- *  @param titleFont         UIFont
- *  @param descriptionString NSString
- *  @param descriptionColor  UIColor
- *  @param descriptionFont   UIFont
- *  @param arrowImage        UIImage
- *  @param arrowPosition     FTFoldingSectionHeaderArrowPosition
- *  @param sectionState      FTFoldingSectionState
+ setup
+
+ @param backgroundColor UIColor
+ @param titleString NSString
+ @param titleColor UIColor
+ @param titleFont UIFont
+ @param descriptionString NSString
+ @param descriptionColor UIColor
+ @param descriptionFont UIFont
+ @param arrowImage UIImage
+ @param arrowPosition FTFoldingSectionHeaderArrowPosition
+ @param sectionState FTFoldingSectionState
  */
--(void)setupWithBackgroundColor:(UIColor *)backgroundColor
+- (void)setupWithBackgroundColor:(UIColor *)backgroundColor
                     titleString:(NSString *)titleString
                      titleColor:(UIColor *)titleColor
                       titleFont:(UIFont *)titleFont
@@ -261,9 +253,5 @@ typedef NS_ENUM(NSUInteger, FTFoldingSectionHeaderArrowPosition) {
                      arrowImage:(UIImage *)arrowImage
                   arrowPosition:(FTFoldingSectionHeaderArrowPosition)arrowPosition
                    sectionState:(FTFoldingSectionState)sectionState;
-
-
-
-
 
 @end

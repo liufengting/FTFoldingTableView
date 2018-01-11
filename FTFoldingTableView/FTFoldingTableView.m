@@ -30,7 +30,7 @@
 
 #pragma mark - Initial Methods
 
--(instancetype)init
+- (instancetype)init
 {
     self = [super init];
     if (self) {
@@ -39,7 +39,7 @@
     return self;
 }
 
--(instancetype)initWithFrame:(CGRect)frame
+- (instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
@@ -48,7 +48,7 @@
     return self;
 }
 
--(instancetype)initWithFrame:(CGRect)frame style:(UITableViewStyle)style
+- (instancetype)initWithFrame:(CGRect)frame style:(UITableViewStyle)style
 {
     self = [super initWithFrame:frame style:style];
     if (self) {
@@ -56,7 +56,7 @@
     }
     return self;
 }
--(instancetype)initWithCoder:(NSCoder *)aDecoder
+- (instancetype)initWithCoder:(NSCoder *)aDecoder
 {
     self = [super initWithCoder:aDecoder];
     if (self) {
@@ -67,7 +67,7 @@
 
 #pragma mark - Setup Methods
 
--(void)setupDelegateAndDataSource
+- (void)setupDelegateAndDataSource
 {
     self.delegate = self;
     self.dataSource = self;
@@ -80,7 +80,7 @@
                                                object:nil];
 }
 
--(NSMutableArray *)statusArray
+- (NSMutableArray *)statusArray
 {
     if (!_statusArray) {
         _statusArray = [NSMutableArray array];
@@ -101,7 +101,7 @@
     return _statusArray;
 }
 
--(void)onChangeStatusBarOrientationNotification:(NSNotification *)notification
+- (void)onChangeStatusBarOrientationNotification:(NSNotification *)notification
 {
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self reloadData];
@@ -110,49 +110,49 @@
 
 #pragma mark - UI Configration
 
--(FTFoldingSectionHeaderArrowPosition )perferedArrowPosition
+- (FTFoldingSectionHeaderArrowPosition )perferedArrowPosition
 {
     if (_foldingDelegate && [_foldingDelegate respondsToSelector:@selector(perferedArrowPositionForFTFoldingTableView:)]) {
         return [_foldingDelegate perferedArrowPositionForFTFoldingTableView:self];
     }
     return FTFoldingSectionHeaderArrowPositionRight;
 }
--(UIColor *)backgroundColorForSection:(NSInteger )section
+- (UIColor *)backgroundColorForSection:(NSInteger )section
 {
     if (_foldingDelegate && [_foldingDelegate respondsToSelector:@selector(ftFoldingTableView:backgroundColorForHeaderInSection:)]) {
         return [_foldingDelegate ftFoldingTableView:self backgroundColorForHeaderInSection:section];
     }
     return [UIColor colorWithRed:102/255.f green:102/255.f blue:255/255.f alpha:1.f];
 }
--(NSString *)titleForSection:(NSInteger )section
+- (NSString *)titleForSection:(NSInteger )section
 {
     if (_foldingDelegate && [_foldingDelegate respondsToSelector:@selector(ftFoldingTableView:titleForHeaderInSection:)]) {
         return [_foldingDelegate ftFoldingTableView:self titleForHeaderInSection:section];
     }
     return [NSString string];
 }
--(UIFont *)titleFontForSection:(NSInteger )section
+- (UIFont *)titleFontForSection:(NSInteger )section
 {
     if (_foldingDelegate && [_foldingDelegate respondsToSelector:@selector(ftFoldingTableView:fontForTitleInSection:)]) {
         return [_foldingDelegate ftFoldingTableView:self fontForTitleInSection:section];
     }
     return [UIFont boldSystemFontOfSize:16];
 }
--(UIColor *)titleColorForSection:(NSInteger )section
+- (UIColor *)titleColorForSection:(NSInteger )section
 {
     if (_foldingDelegate && [_foldingDelegate respondsToSelector:@selector(ftFoldingTableView:textColorForTitleInSection:)]) {
         return [_foldingDelegate ftFoldingTableView:self textColorForTitleInSection:section];
     }
     return [UIColor whiteColor];
 }
--(NSString *)descriptionForSection:(NSInteger )section
+- (NSString *)descriptionForSection:(NSInteger )section
 {
     if (_foldingDelegate && [_foldingDelegate respondsToSelector:@selector(ftFoldingTableView:descriptionForHeaderInSection:)]) {
         return [_foldingDelegate ftFoldingTableView:self descriptionForHeaderInSection:section];
     }
     return [NSString string];
 }
--(UIFont *)descriptionFontForSection:(NSInteger )section
+- (UIFont *)descriptionFontForSection:(NSInteger )section
 {
     if (_foldingDelegate && [_foldingDelegate respondsToSelector:@selector(ftFoldingTableView:fontForDescriptionInSection:)]) {
         return [_foldingDelegate ftFoldingTableView:self fontForDescriptionInSection:section];
@@ -160,7 +160,7 @@
     return [UIFont systemFontOfSize:13];
 }
 
--(UIColor *)descriptionColorForSection:(NSInteger )section
+- (UIColor *)descriptionColorForSection:(NSInteger )section
 {
     if (_foldingDelegate && [_foldingDelegate respondsToSelector:@selector(ftFoldingTableView:textColorForDescriptionInSection:)]) {
         return [_foldingDelegate ftFoldingTableView:self textColorForDescriptionInSection:section];
@@ -168,7 +168,7 @@
     return [UIColor whiteColor];
 }
 
--(UIImage *)arrowImageForSection:(NSInteger )section
+- (UIImage *)arrowImageForSection:(NSInteger )section
 {
     if (_foldingDelegate && [_foldingDelegate respondsToSelector:@selector(ftFoldingTableView:arrowImageForSection:)]) {
         return [_foldingDelegate ftFoldingTableView:self arrowImageForSection:section];
@@ -179,7 +179,7 @@
 
 #pragma mark - UITableViewDelegate,UITableViewDataSource
 
--(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     if (_foldingDelegate && [_foldingDelegate respondsToSelector:@selector(numberOfSectionForFTFoldingTableView:)]) {
         return [_foldingDelegate numberOfSectionForFTFoldingTableView:self];
@@ -187,7 +187,7 @@
         return self.numberOfSections;
     }
 }
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (((NSNumber *)self.statusArray[section]).integerValue == FTFoldingSectionStateShow) {
         if (_foldingDelegate && [_foldingDelegate respondsToSelector:@selector(ftFoldingTableView:numberOfRowsInSection:)]) {
@@ -196,7 +196,7 @@
     }
     return 0;
 }
--(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
     if (_foldingDelegate && [_foldingDelegate respondsToSelector:@selector(ftFoldingTableView:heightForHeaderInSection:)]) {
         return [_foldingDelegate ftFoldingTableView:self heightForHeaderInSection:section];
@@ -204,7 +204,7 @@
         return self.sectionHeaderHeight;
     }
 }
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (_foldingDelegate && [_foldingDelegate respondsToSelector:@selector(ftFoldingTableView:heightForRowAtIndexPath:)]) {
         return [_foldingDelegate ftFoldingTableView:self heightForRowAtIndexPath:indexPath];
@@ -212,7 +212,7 @@
         return self.rowHeight;
     }
 }
--(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
     if (self.style == UITableViewStylePlain) {
         return 0;
@@ -220,7 +220,7 @@
         return 0.01;
     }
 }
--(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     FTFoldingSectionHeader *sectionHeaderView = [[FTFoldingSectionHeader alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, [self tableView:self heightForHeaderInSection:section])
                                                                                       withTag:section];
@@ -241,22 +241,29 @@
     return sectionHeaderView;
 }
 
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (_foldingDelegate && [_foldingDelegate respondsToSelector:@selector(ftFoldingTableView:cellForRowAtIndexPath:)]) {
         return [_foldingDelegate ftFoldingTableView:self cellForRowAtIndexPath:indexPath];
     }
     return [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"DefaultCellIndentifier"];
 }
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (_foldingDelegate && [_foldingDelegate respondsToSelector:@selector(ftFoldingTableView:didSelectRowAtIndexPath:)]) {
         [_foldingDelegate ftFoldingTableView:self didSelectRowAtIndexPath:indexPath];
     }
 }
+- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (_foldingDelegate && [_foldingDelegate respondsToSelector:@selector(ftFoldingTableView:didDeselectRowAtIndexPath:)]) {
+        [_foldingDelegate ftFoldingTableView:self didDeselectRowAtIndexPath:indexPath];
+    }
+}
+
 #pragma mark - FTFoldingSectionHeaderDelegate
 
--(void)ftFoldingSectionHeaderTappedAtIndex:(NSInteger)index
+- (void)ftFoldingSectionHeaderTappedAtIndex:(NSInteger)index
 {
     BOOL currentIsOpen = ((NSNumber *)self.statusArray[index]).boolValue;
     
@@ -304,7 +311,7 @@
 
 @implementation FTFoldingSectionHeader
 
--(instancetype)initWithFrame:(CGRect)frame withTag:(NSInteger)tag
+- (instancetype)initWithFrame:(CGRect)frame withTag:(NSInteger)tag
 {
     self = [super initWithFrame:frame];
     if (self) {
@@ -313,7 +320,7 @@
     }
     return self;
 }
--(void)awakeFromNib
+- (void)awakeFromNib
 {
     [super awakeFromNib];
     [self setupSubviewsWithArrowPosition:FTFoldingSectionHeaderArrowPositionRight];
@@ -321,7 +328,7 @@
 }
 
 
--(UILabel *)titleLabel
+- (UILabel *)titleLabel
 {
     if (!_titleLabel) {
         _titleLabel = [[UILabel alloc]initWithFrame:CGRectZero];
@@ -330,7 +337,7 @@
     }
     return _titleLabel;
 }
--(UILabel *)descriptionLabel
+- (UILabel *)descriptionLabel
 {
     if (!_descriptionLabel) {
         _descriptionLabel = [[UILabel alloc]initWithFrame:CGRectZero];
@@ -339,7 +346,7 @@
     }
     return _descriptionLabel;
 }
--(UIImageView *)arrowImageView
+- (UIImageView *)arrowImageView
 {
     if (!_arrowImageView) {
         _arrowImageView = [[UIImageView alloc]initWithFrame:CGRectZero];
@@ -348,7 +355,7 @@
     }
     return _arrowImageView;
 }
--(UIView *)sepertorLine
+- (UIView *)sepertorLine
 {
     if (!_sepertorLine) {
         _sepertorLine = [[UIView alloc]initWithFrame:CGRectZero];
@@ -358,7 +365,7 @@
     return _sepertorLine;
 }
 
--(UITapGestureRecognizer *)tapGesture
+- (UITapGestureRecognizer *)tapGesture
 {
     if (!_tapGesture) {
         _tapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(onTapped:)];
@@ -366,7 +373,7 @@
     return _tapGesture;
 }
 
-//-(UIBezierPath *)getSepertorPath
+//- (UIBezierPath *)getSepertorPath
 //{
 //    UIBezierPath *path = [UIBezierPath bezierPath];
 //    [path moveToPoint:CGPointMake(0, self.frame.size.height - FTFoldingDefaultSepertorLineWidth)];
@@ -375,8 +382,7 @@
 //    return path;
 //}
 
-
--(void)setupWithBackgroundColor:(UIColor *)backgroundColor
+- (void)setupWithBackgroundColor:(UIColor *)backgroundColor
                     titleString:(NSString *)titleString
                      titleColor:(UIColor *)titleColor
                       titleFont:(UIFont *)titleFont
@@ -387,7 +393,6 @@
                   arrowPosition:(FTFoldingSectionHeaderArrowPosition)arrowPosition
                    sectionState:(FTFoldingSectionState)sectionState
 {
-    
     [self setBackgroundColor:backgroundColor];
     
     [self setupSubviewsWithArrowPosition:arrowPosition];
@@ -419,7 +424,7 @@
     }
     
 }
--(void)setupSubviewsWithArrowPosition:(FTFoldingSectionHeaderArrowPosition)arrowPosition
+- (void)setupSubviewsWithArrowPosition:(FTFoldingSectionHeaderArrowPosition)arrowPosition
 {
     CGFloat labelWidth = (self.frame.size.width - FTFoldingDefaultMargin*2 - FTFoldingDefaultIconSize)/2;
     CGFloat labelHeight = self.frame.size.height;
@@ -447,7 +452,7 @@
     
 }
 
--(void)shouldExpand:(BOOL)shouldExpand
+- (void)shouldExpand:(BOOL)shouldExpand
 {
     
     [UIView animateWithDuration:0.2
@@ -473,7 +478,7 @@
 }
 
 
--(void)onTapped:(UITapGestureRecognizer *)gesture
+- (void)onTapped:(UITapGestureRecognizer *)gesture
 {
     [self shouldExpand:![NSNumber numberWithInteger:self.sectionState].boolValue];
     if (_tapDelegate && [_tapDelegate respondsToSelector:@selector(ftFoldingSectionHeaderTappedAtIndex:)]) {
