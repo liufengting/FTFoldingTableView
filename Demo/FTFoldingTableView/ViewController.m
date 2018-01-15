@@ -34,8 +34,23 @@ static NSString * const DemoTableViewIdentifier        = @"DemoTableViewIdentifi
 - (IBAction)changeStyle:(UIBarButtonItem *)sender
 {
     self.arrowPosition = [NSNumber numberWithBool:(![NSNumber numberWithInteger:self.arrowPosition].boolValue)].integerValue;
-    
     [self.ft_tableView reloadData];
+
+    
+//  foldAllSections
+//    [self.ft_tableView foldAllSections];
+    
+//  expandAllSections
+//    [self.ft_tableView expandAllSections];
+
+//  test one section
+//    NSInteger section = 0;
+//    FTFoldingSectionState state = [self.ft_tableView foldingStateForSection:section];
+//    if (state == FTFoldingSectionStateFold) {
+//        [self.ft_tableView expandSection:section];
+//    }else{
+//        [self.ft_tableView foldSection:section];
+//    }
 }
 
 #pragma mark - FTFoldingTableViewDelegate / required
@@ -80,7 +95,11 @@ static NSString * const DemoTableViewIdentifier        = @"DemoTableViewIdentifi
 
 - (void)ftFoldingTableView:(FTFoldingTableView *)ftTableView willChangeToSectionState:(FTFoldingSectionState)sectionState section:(NSInteger)section
 {
-    NSLog(@"section: %ld is about to %@", section, sectionState == FTFoldingSectionStateFlod ? @"close" : @"open");
+    NSLog(@"section: %ld is about to %@", section, sectionState == FTFoldingSectionStateFold ? @"close" : @"open");
+}
+- (void)ftFoldingTableView:(FTFoldingTableView *)ftTableView didChangeToSectionState:(FTFoldingSectionState)sectionState section:(NSInteger)section
+{
+    NSLog(@"section: %ld is now %@", section, sectionState == FTFoldingSectionStateFold ? @"closed" : @"opened");
 }
 
 - (NSString *)ftFoldingTableView:(FTFoldingTableView *)ftTableView descriptionForHeaderInSection:(NSInteger)section

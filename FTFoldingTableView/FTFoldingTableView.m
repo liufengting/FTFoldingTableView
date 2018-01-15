@@ -22,7 +22,7 @@
  */
 @interface FTFoldingTableView ()
 
-@property (nonatomic, strong)NSMutableArray *statusArray;
+@property (nonatomic, strong) NSMutableArray<NSNumber *> *statusArray;
 
 @end
 
@@ -90,12 +90,12 @@
             [_statusArray removeObjectsInRange:NSMakeRange(self.numberOfSections - 1, _statusArray.count - self.numberOfSections)];
         }else if (_statusArray.count < self.numberOfSections) {
             for (NSInteger i = self.numberOfSections - _statusArray.count; i < self.numberOfSections; i++) {
-                [_statusArray addObject:[NSNumber numberWithInteger:FTFoldingSectionStateFlod]];
+                [_statusArray addObject:[NSNumber numberWithInteger:FTFoldingSectionStateFold]];
             }
         }
     }else{
         for (NSInteger i = 0; i < self.numberOfSections; i++) {
-            [_statusArray addObject:[NSNumber numberWithInteger:FTFoldingSectionStateFlod]];
+            [_statusArray addObject:[NSNumber numberWithInteger:FTFoldingSectionStateFold]];
         }
     }
     return _statusArray;
@@ -189,7 +189,7 @@
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (((NSNumber *)self.statusArray[section]).integerValue == FTFoldingSectionStateShow) {
+    if (((NSNumber *)self.statusArray[section]).integerValue == FTFoldingSectionStateExpand) {
         if (_foldingDelegate && [_foldingDelegate respondsToSelector:@selector(ftFoldingTableView:numberOfRowsInSection:)]) {
             return [_foldingDelegate ftFoldingTableView:self numberOfRowsInSection:section];
         }
@@ -269,7 +269,7 @@
     
     if (_foldingDelegate && [_foldingDelegate respondsToSelector:@selector(ftFoldingTableView:willChangeToSectionState:section:)]) {
         [_foldingDelegate ftFoldingTableView:self
-                    willChangeToSectionState:(currentIsOpen == YES) ? FTFoldingSectionStateFlod : FTFoldingSectionStateShow
+                    willChangeToSectionState:(currentIsOpen == YES) ? FTFoldingSectionStateFold : FTFoldingSectionStateExpand
                                      section:index];
     }
 
@@ -289,6 +289,51 @@
             [self insertRowsAtIndexPaths:[NSArray arrayWithArray:rowArray] withRowAnimation:UITableViewRowAnimationTop];
         }
     }
+    if (_foldingDelegate && [_foldingDelegate respondsToSelector:@selector(ftFoldingTableView:didChangeToSectionState:section:)]) {
+        [_foldingDelegate ftFoldingTableView:self
+                     didChangeToSectionState:(currentIsOpen == YES) ? FTFoldingSectionStateFold : FTFoldingSectionStateExpand
+                                     section:index];
+    }
+}
+
+- (FTFoldingSectionState)foldingStateForSection:(NSInteger)section
+{
+    if (section <= self.statusArray.count - 1) {
+        return ((NSNumber *)self.statusArray[section]).integerValue;
+    }
+    return FTFoldingSectionStateFold;
+}
+
+- (void)expandSection:(NSInteger)section
+{
+    if ([self foldingStateForSection:section] == FTFoldingSectionStateFold) {
+        [self ftFoldingSectionHeaderTappedAtIndex:section];
+    }
+}
+
+- (void)foldSection:(NSInteger)section
+{
+    if ([self foldingStateForSection:section] == FTFoldingSectionStateExpand) {
+        [self ftFoldingSectionHeaderTappedAtIndex:section];
+    }
+}
+
+- (void)expandAllSections
+{
+    [self.statusArray enumerateObjectsUsingBlock:^(NSNumber * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if (obj.integerValue == FTFoldingSectionStateFold) {
+            [self ftFoldingSectionHeaderTappedAtIndex:idx];
+        }
+    }];
+}
+
+- (void)foldAllSections
+{
+    [self.statusArray enumerateObjectsUsingBlock:^(NSNumber * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if (obj.boolValue == FTFoldingSectionStateExpand) {
+            [self ftFoldingSectionHeaderTappedAtIndex:idx];
+        }
+    }];
 }
 
 @end
@@ -409,7 +454,7 @@
     self.arrowPosition = arrowPosition;
     self.sectionState = sectionState;
     
-    if (sectionState == FTFoldingSectionStateShow) {
+    if (sectionState == FTFoldingSectionStateExpand) {
         if (self.arrowPosition == FTFoldingSectionHeaderArrowPositionRight) {
             self.arrowImageView.transform = CGAffineTransformMakeRotation(-M_PI/2);
         }else{
@@ -482,7 +527,7 @@
 {
     [self shouldExpand:![NSNumber numberWithInteger:self.sectionState].boolValue];
     if (_tapDelegate && [_tapDelegate respondsToSelector:@selector(ftFoldingSectionHeaderTappedAtIndex:)]) {
-        self.sectionState = [NSNumber numberWithBool:(![NSNumber numberWithInteger:self.sectionState].boolValue)].integerValue;
+        self.sectionState = [NSNumber numberWithInteger:(![NSNumber numberWithInteger:self.sectionState].boolValue)].integerValue;
         [_tapDelegate ftFoldingSectionHeaderTappedAtIndex:self.tag];
     }
 }

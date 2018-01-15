@@ -14,13 +14,13 @@
  */
 typedef NS_ENUM(NSUInteger, FTFoldingSectionState) {
     /**
-     section state flod
+     section state fold
      */
-    FTFoldingSectionStateFlod,
+    FTFoldingSectionStateFold,
     /**
      section state show
      */
-    FTFoldingSectionStateShow,
+    FTFoldingSectionStateExpand,
 };
 
 #pragma mark - ENUM FTFoldingSectionHeaderArrowPosition
@@ -112,7 +112,6 @@ typedef NS_ENUM(NSUInteger, FTFoldingSectionHeaderArrowPosition) {
 
 @optional
 
-
 /**
  didChangeSectionState
 
@@ -121,6 +120,14 @@ typedef NS_ENUM(NSUInteger, FTFoldingSectionHeaderArrowPosition) {
  @param section section
  */
 - (void)ftFoldingTableView:(FTFoldingTableView *)ftTableView willChangeToSectionState:(FTFoldingSectionState)sectionState section:(NSInteger)section;
+/**
+ didChangeToSectionState
+ 
+ @param ftTableView FTFoldingTableView
+ @param sectionState FTFoldingSectionState
+ @param section section
+ */
+- (void)ftFoldingTableView:(FTFoldingTableView *)ftTableView didChangeToSectionState:(FTFoldingSectionState)sectionState section:(NSInteger)section;
 /**
  arrowImageForSection
 
@@ -210,6 +217,38 @@ typedef NS_ENUM(NSUInteger, FTFoldingSectionHeaderArrowPosition) {
  FTFoldingTableViewDelegate foldingDelegate
  */
 @property (nonatomic, weak) id<FTFoldingTableViewDelegate> foldingDelegate;
+
+/**
+ foldingStateForSection
+
+ @param section NSInteger
+ @return FTFoldingSectionState
+ */
+- (FTFoldingSectionState)foldingStateForSection:(NSInteger)section;
+
+/**
+ expandSection
+
+ @param section NSInteger
+ */
+- (void)expandSection:(NSInteger)section;
+
+/**
+ foldSection
+
+ @param section NSInteger
+ */
+- (void)foldSection:(NSInteger)section;
+
+/**
+ expandAllSections
+ */
+- (void)expandAllSections;
+
+/**
+ foldAllSections
+ */
+- (void)foldAllSections;
 
 @end
 
