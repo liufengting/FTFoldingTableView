@@ -10,7 +10,7 @@ Pod::Spec.new do |s|
   s.screenshots  = "https://raw.githubusercontent.com/liufengting/FTFoldingTableView/master/Screenshots/Screenshots1.png","https://raw.githubusercontent.com/liufengting/FTFoldingTableView/master/Screenshots/Screenshots2.png","https://raw.githubusercontent.com/liufengting/FTFoldingTableView/master/Screenshots/Screenshots3.png","https://raw.githubusercontent.com/liufengting/FTFoldingTableView/master/Screenshots/Screenshots4.png"
   s.license      = { :type => "MIT", :file => "LICENSE" }
   s.author             = { "liufengting" => "wo157121900@me.com" }
-  s.social_media_url   = "http://twitter.com/liufengting"
+  s.social_media_url   = "https://twitter.com/liufengting"
   s.platform     = :ios
   s.source       = { :git => "https://github.com/liufengting/FTFoldingTableView.git", :tag => "#{s.version}" }
   s.source_files = "FTFoldingTableView/*.{h,m}"
